@@ -4,21 +4,20 @@ using UnityEngine;
 
 public class NormalTapioka : TapiokaBase
 {
-    // Start is called before the first frame update
+    [SerializeField] int _speed = 2;
+
     void Start()
     {
         
     }
 
-    // Update is called once per frame
     void Update()
     {
-        if (!strawpoint)
+        if (strawpoint)
         {
-
+            transform.position = Vector2.MoveTowards(transform.position, strawpoint.transform.position, _speed);
         }
     }
-
 
     public override void Absorption(Transform straw)
     {
