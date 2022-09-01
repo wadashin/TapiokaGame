@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class NormalTapioka : TapiokaBase
 {
-    [SerializeField] int _speed = 2;
+    [SerializeField] float _speed = 2;
 
     void Start()
     {
