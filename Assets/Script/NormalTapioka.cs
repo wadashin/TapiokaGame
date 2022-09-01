@@ -22,5 +22,6 @@ public class NormalTapioka : TapiokaBase
     public override void Absorption(Transform straw)
     {
         strawpoint = straw;
+        Destroy(GetComponent<Rigidbody2D>());
     }
 }
