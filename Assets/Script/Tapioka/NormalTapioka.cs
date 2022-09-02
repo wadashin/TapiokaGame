@@ -14,8 +14,6 @@ public class NormalTapioka : TapiokaBase
 
     [SerializeField] GameObject _iTapi;
 
-    [SerializeField] Transform _iTapiPos;
-
 
     void Start()
     {

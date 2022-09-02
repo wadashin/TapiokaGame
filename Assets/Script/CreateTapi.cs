@@ -26,9 +26,9 @@ public class CreateTapi : MonoBehaviour
         }
         else
         {
-            Debug.Log(2);
+            Instantiate(tapis[1], this.transform);
         }
-        yield return new WaitForSecondsRealtime(0.1f);
+        yield return new WaitForSecondsRealtime(0.2f);
         StartCoroutine("ItemCreate");
     }
 }

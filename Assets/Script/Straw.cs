@@ -31,22 +31,23 @@ public class Straw : MonoBehaviour
         else if(Input.GetButtonUp("Fire1"))
         {
             GetComponent<CircleCollider2D>().enabled = false;
+            StopAllCoroutines();
         }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.TryGetComponent(out NormalTapioka tapioka))
+        if (collision.TryGetComponent(out TapiokaBase tapioka))
         {
             tapioka.Absorption(_absorptionPoint);
-            //StartCoroutine("AbsorptionCoolTime");
+            StartCoroutine("AbsorptionCoolTime");
         }
     }
 
-    //IEnumerator AbsorptionCoolTime()
-    //{
-    //    GetComponent<CircleCollider2D>().enabled = false;
-    //    yield return new WaitForSecondsRealtime(0.5f);
-    //    GetComponent<CircleCollider2D>().enabled = true;
-    //}
+    IEnumerator AbsorptionCoolTime()
+    {
+        GetComponent<CircleCollider2D>().enabled = false;
+        yield return new WaitForSecondsRealtime(0.2f);
+        GetComponent<CircleCollider2D>().enabled = true;
+    }
 }
