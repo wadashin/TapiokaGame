@@ -6,6 +6,8 @@ public class NormalTapioka : TapiokaBase
 {
     Rigidbody2D _rb;
 
+    bool absorption = false;
+
     [SerializeField] float _speed = 2;
 
     void Start()
@@ -15,17 +17,47 @@ public class NormalTapioka : TapiokaBase
 
     void Update()
     {
-        if (strawpoint)
+        if (strawpoint && absorption)
         {
-            //transform.position = Vector2.MoveTowards(transform.position, strawpoint.transform.position, _speed);
-            _rb.velocity = Vector2.up;
+            _rb.velocity = Vector2.up * _speed;
             transform.position = new Vector2(strawpoint.transform.position.x, transform.position.y);
         }
+
+        
     }
 
     public override void Absorption(Transform straw)
     {
         strawpoint = straw;
         _rb.gravityScale = 0;
+    }
+
+    public override void Swallow()
+    {
+        throw new System.NotImplementedException();
+    }
+
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.CompareTag("StrawObj"))
+        {
+            absorption = true;
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.CompareTag("StrawObj"))
+        {
+            if(strawpoint)
+            {
+                _rb.velocity = Vector2.zero;
+                _rb.gravityScale = 1;
+            }
+            absorption = false;
+            strawpoint = null;
+
+        }
     }
 }
