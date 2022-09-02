@@ -4,8 +4,16 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    [SerializeField] Vector2 _nodo;
-    [SerializeField] Vector2 _tapiposi;
+    [SerializeField] Transform _tapiposi;
+
+    public Transform Tapiposi
+    {
+        get
+        {
+            return _tapiposi;
+        }
+    }
+
     void Start()
     {
         

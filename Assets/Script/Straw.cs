@@ -39,6 +39,14 @@ public class Straw : MonoBehaviour
         if (collision.TryGetComponent(out NormalTapioka tapioka))
         {
             tapioka.Absorption(_absorptionPoint);
+            //StartCoroutine("AbsorptionCoolTime");
         }
     }
+
+    //IEnumerator AbsorptionCoolTime()
+    //{
+    //    GetComponent<CircleCollider2D>().enabled = false;
+    //    yield return new WaitForSecondsRealtime(0.5f);
+    //    GetComponent<CircleCollider2D>().enabled = true;
+    //}
 }
