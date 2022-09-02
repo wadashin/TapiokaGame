@@ -10,9 +10,14 @@ public class NormalTapioka : TapiokaBase
 
     [SerializeField] float _speed = 2;
 
+    [SerializeField] GameObject _iTapi;
+
+    [SerializeField] Transform _iTapiPos;
+
     void Start()
     {
         _rb = GetComponent<Rigidbody2D>();
+        _rb.AddForce(Vector2.up * 2,ForceMode2D.Impulse);
     }
 
     void Update()
@@ -22,8 +27,6 @@ public class NormalTapioka : TapiokaBase
             _rb.velocity = Vector2.up * _speed;
             transform.position = new Vector2(strawpoint.transform.position.x, transform.position.y);
         }
-
-        
     }
 
     public override void Absorption(Transform straw)
@@ -34,7 +37,8 @@ public class NormalTapioka : TapiokaBase
 
     public override void Swallow()
     {
-        throw new System.NotImplementedException();
+        Instantiate(_iTapi, _iTapiPos.transform);
+        Destroy(this.gameObject);
     }
 
 
@@ -43,6 +47,10 @@ public class NormalTapioka : TapiokaBase
         if(collision.CompareTag("StrawObj"))
         {
             absorption = true;
+        }
+        else if(collision.CompareTag("SwallowPoint"))
+        {
+            Swallow();
         }
     }
 

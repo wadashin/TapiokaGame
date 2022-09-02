@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    // Start is called before the first frame update
+    [SerializeField] Vector2 _nodo;
+    [SerializeField] Vector2 _tapiposi;
     void Start()
     {
         
     }
 
-    // Update is called once per frame
-    void Update()
+    void Point(GameObject tapi)
     {
-        
+
     }
 }

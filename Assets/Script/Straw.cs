@@ -23,6 +23,15 @@ public class Straw : MonoBehaviour
             target = Camera.main.ScreenToWorldPoint(new Vector2(mouse.x, mouse.y));
             this.transform.position = target;
         }
+
+        if (Input.GetButtonDown("Fire1"))
+        {
+            GetComponent<CircleCollider2D>().enabled = true;
+        }
+        else if(Input.GetButtonUp("Fire1"))
+        {
+            GetComponent<CircleCollider2D>().enabled = false;
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
