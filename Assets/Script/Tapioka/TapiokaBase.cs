@@ -9,6 +9,4 @@ public abstract class TapiokaBase : MonoBehaviour
     public abstract void Absorption(Transform straw);
 
     public abstract void Swallow();
-
-    public abstract void Stop();
 }

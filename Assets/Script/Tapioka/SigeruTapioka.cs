@@ -10,7 +10,6 @@ public class SigeruTapioka : TapiokaBase
 
     bool absorption = false;
 
-    bool timeOver = true;
 
     [SerializeField] float _speed = 2;
 
@@ -27,7 +26,7 @@ public class SigeruTapioka : TapiokaBase
 
     void Update()
     {
-        if (timeOver && strawpoint && absorption)
+        if (strawpoint && absorption)
         {
             _rb.velocity = Vector2.up * _speed;
             transform.position = new Vector2(strawpoint.transform.position.x, transform.position.y);
@@ -47,7 +46,6 @@ public class SigeruTapioka : TapiokaBase
         Instantiate(_iTapi, gameManager.Tapiposi);
         Destroy(this.gameObject);
     }
-
 
 
     private void OnTriggerEnter2D(Collider2D collision)

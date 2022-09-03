@@ -11,10 +11,6 @@ public class GameManager : MonoBehaviour
 
     private int score = 0;
 
-    public delegate void StopDelegate();
-
-    public StopDelegate stopDelegate;
-
     public Transform Tapiposi
     {
         get
@@ -53,7 +49,6 @@ public class GameManager : MonoBehaviour
 
     public void GameEnd()
     {
-        Debug.Log(1);
-        stopDelegate();
+        Straw.agameEnd = false;
     }
 }

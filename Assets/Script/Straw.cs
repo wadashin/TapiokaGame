@@ -7,6 +7,8 @@ public class Straw : MonoBehaviour
     private Vector2 mouse;
     private Vector2 target;
 
+    public static bool agameEnd = true;
+
     [SerializeField] Transform _absorptionPoint;
 
     void Start()
@@ -37,7 +39,7 @@ public class Straw : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.TryGetComponent(out TapiokaBase tapioka))
+        if (agameEnd && collision.TryGetComponent(out TapiokaBase tapioka))
         {
             tapioka.Absorption(_absorptionPoint);
             StartCoroutine("AbsorptionCoolTime");
