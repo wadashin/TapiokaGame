@@ -10,6 +10,8 @@ public class NormalTapioka : TapiokaBase
 
     bool absorption = false;
 
+    bool timeOver = true;
+
     [SerializeField] float _speed = 2;
 
     [SerializeField] GameObject _iTapi;
@@ -21,11 +23,12 @@ public class NormalTapioka : TapiokaBase
         _rb = GetComponent<Rigidbody2D>();
         _rb.velocity = Vector2.zero;
         _rb.AddForce(Vector2.up * 2,ForceMode2D.Impulse);
+        gameManager.stopDelegate += Stop;
     }
 
     void Update()
     {
-        if (strawpoint && absorption)
+        if (timeOver && strawpoint && absorption)
         {
             _rb.velocity = Vector2.up * _speed;
             transform.position = new Vector2(strawpoint.transform.position.x, transform.position.y);
@@ -43,7 +46,15 @@ public class NormalTapioka : TapiokaBase
     public override void Swallow()
     {
         Instantiate(_iTapi, gameManager.Tapiposi);
+        gameManager.Score++;
+        gameManager.stopDelegate -= Stop;
         Destroy(this.gameObject);
+    }
+
+    public override void Stop()
+    {
+        _rb.gravityScale = 0;
+        timeOver = false;
     }
 
 
@@ -69,4 +80,6 @@ public class NormalTapioka : TapiokaBase
 
         }
     }
+
+
 }

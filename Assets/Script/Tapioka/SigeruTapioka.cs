@@ -10,6 +10,8 @@ public class SigeruTapioka : TapiokaBase
 
     bool absorption = false;
 
+    bool timeOver = true;
+
     [SerializeField] float _speed = 2;
 
     [SerializeField] GameObject _iTapi;
@@ -20,13 +22,12 @@ public class SigeruTapioka : TapiokaBase
         gameManager = GameObject.Find("===GameManagerObj===").GetComponent<GameManager>();
         _rb = GetComponent<Rigidbody2D>();
         _rb.AddForce(Vector2.up * 2, ForceMode2D.Impulse);
-
         StartCoroutine("Destroyer");
     }
 
     void Update()
     {
-        if (strawpoint && absorption)
+        if (timeOver && strawpoint && absorption)
         {
             _rb.velocity = Vector2.up * _speed;
             transform.position = new Vector2(strawpoint.transform.position.x, transform.position.y);
@@ -46,6 +47,7 @@ public class SigeruTapioka : TapiokaBase
         Instantiate(_iTapi, gameManager.Tapiposi);
         Destroy(this.gameObject);
     }
+
 
 
     private void OnTriggerEnter2D(Collider2D collision)

@@ -50,4 +50,6 @@ public class Straw : MonoBehaviour
         yield return new WaitForSecondsRealtime(0.2f);
         GetComponent<CircleCollider2D>().enabled = true;
     }
+
+
 }
