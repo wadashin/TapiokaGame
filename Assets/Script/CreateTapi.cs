@@ -22,13 +22,13 @@ public class CreateTapi : MonoBehaviour
     {
         if (Random.Range(0, 100) <= _randomNum)
         {
-            Instantiate(tapis[0], this.transform);
+            Instantiate(tapis[0], new Vector2(this.transform.position.x + Random.Range(-2.0f,2.0f), this.transform.position.y), Quaternion.identity);
         }
         else
         {
-            Instantiate(tapis[1], this.transform);
+            Instantiate(tapis[1], new Vector2(this.transform.position.x + Random.Range(-2, 2), this.transform.position.y), Quaternion.identity);
         }
-        yield return new WaitForSecondsRealtime(0.2f);
+        yield return new WaitForSecondsRealtime(0.1f);
         StartCoroutine("ItemCreate");
     }
 }

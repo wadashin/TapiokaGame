@@ -19,6 +19,7 @@ public class NormalTapioka : TapiokaBase
     {
         gameManager = GameObject.Find("===GameManagerObj===").GetComponent<GameManager>();
         _rb = GetComponent<Rigidbody2D>();
+        _rb.velocity = Vector2.zero;
         _rb.AddForce(Vector2.up * 2,ForceMode2D.Impulse);
     }
 
@@ -33,9 +34,8 @@ public class NormalTapioka : TapiokaBase
 
     public override void Absorption(Transform straw)
     {
+        absorption = true;
         strawpoint = straw;
-
-        _rb.gravityScale = 0;
 
         GetComponent<CircleCollider2D>().isTrigger = true;
     }
@@ -51,7 +51,7 @@ public class NormalTapioka : TapiokaBase
     {
         if(collision.CompareTag("StrawObj"))
         {
-            absorption = true;
+            //absorption = true;
         }
         else if(collision.CompareTag("SwallowPoint"))
         {
@@ -63,11 +63,6 @@ public class NormalTapioka : TapiokaBase
     {
         if (collision.CompareTag("StrawObj"))
         {
-            if(strawpoint)
-            {
-                _rb.velocity = Vector2.zero;
-                _rb.gravityScale = 1;
-            }
             GetComponent<CircleCollider2D>().isTrigger = false;
             absorption = false;
             strawpoint = null;

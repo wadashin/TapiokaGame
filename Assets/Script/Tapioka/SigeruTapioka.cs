@@ -33,9 +33,8 @@ public class SigeruTapioka : TapiokaBase
 
     public override void Absorption(Transform straw)
     {
+        absorption = true;
         strawpoint = straw;
-
-        _rb.gravityScale = 0;
 
         GetComponent<CircleCollider2D>().isTrigger = true;
     }
@@ -51,7 +50,7 @@ public class SigeruTapioka : TapiokaBase
     {
         if (collision.CompareTag("StrawObj"))
         {
-            absorption = true;
+
         }
         else if (collision.CompareTag("SwallowPoint"))
         {
@@ -66,7 +65,6 @@ public class SigeruTapioka : TapiokaBase
             if (strawpoint)
             {
                 _rb.velocity = Vector2.zero;
-                _rb.gravityScale = 1;
             }
             GetComponent<CircleCollider2D>().isTrigger = false;
             absorption = false;

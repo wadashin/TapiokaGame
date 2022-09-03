@@ -115,7 +115,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 5
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
@@ -138,4 +138,3 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _speed: 10
   _iTapi: {fileID: 5649755927645164953, guid: e55aaab3a8eff004a88e4ed5e7b6059a, type: 3}
-  _iTapiPos: {fileID: 5001590504112888647, guid: 5333863c1e768cb41bb1de63ef62e755, type: 3}
