@@ -20,6 +20,8 @@ public class SigeruTapioka : TapiokaBase
         gameManager = GameObject.Find("===GameManagerObj===").GetComponent<GameManager>();
         _rb = GetComponent<Rigidbody2D>();
         _rb.AddForce(Vector2.up * 2, ForceMode2D.Impulse);
+
+        StartCoroutine("Destroyer");
     }
 
     void Update()
@@ -62,13 +64,15 @@ public class SigeruTapioka : TapiokaBase
     {
         if (collision.CompareTag("StrawObj"))
         {
-            if (strawpoint)
-            {
-                _rb.velocity = Vector2.zero;
-            }
             GetComponent<CircleCollider2D>().isTrigger = false;
             absorption = false;
             strawpoint = null;
         }
+    }
+
+    IEnumerator Destroyer()
+    {
+        yield return new WaitForSecondsRealtime(5);
+        Destroy(this.gameObject);
     }
 }
