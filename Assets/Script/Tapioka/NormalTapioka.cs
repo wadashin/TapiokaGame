@@ -47,6 +47,11 @@ public class NormalTapioka : TapiokaBase
         Destroy(this.gameObject);
     }
 
+    public override void Deth()
+    {
+        Destroy(this.gameObject);
+    }
+
 
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -58,6 +63,10 @@ public class NormalTapioka : TapiokaBase
         else if(collision.CompareTag("SwallowPoint"))
         {
             Swallow();
+        }
+        else if(collision.CompareTag("DethZone"))
+        {
+            Deth();
         }
     }
 

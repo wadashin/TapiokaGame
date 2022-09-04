@@ -7,9 +7,25 @@ public class Straw : MonoBehaviour
     private Vector2 mouse;
     private Vector2 target;
 
+    private static float capacity = 0.1f;
+
     public static bool agameEnd = true;
 
     [SerializeField] Transform _absorptionPoint;
+
+    public static float Capacity
+    {
+        get
+        {
+            return capacity;
+        }
+        set
+        {
+            capacity += 0.1f;
+            Debug.Log(capacity);
+        }
+    }
+
 
     void Start()
     {
@@ -37,6 +53,7 @@ public class Straw : MonoBehaviour
         }
     }
 
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (agameEnd && collision.TryGetComponent(out TapiokaBase tapioka))
@@ -49,7 +66,7 @@ public class Straw : MonoBehaviour
     IEnumerator AbsorptionCoolTime()
     {
         GetComponent<CircleCollider2D>().enabled = false;
-        yield return new WaitForSecondsRealtime(0.2f);
+        yield return new WaitForSecondsRealtime(capacity);
         GetComponent<CircleCollider2D>().enabled = true;
     }
 

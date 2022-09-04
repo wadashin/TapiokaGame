@@ -44,6 +44,12 @@ public class SigeruTapioka : TapiokaBase
     public override void Swallow()
     {
         Instantiate(_iTapi, gameManager.Tapiposi);
+        Straw.Capacity++;
+        Destroy(this.gameObject);
+    }
+
+    public override void Deth()
+    {
         Destroy(this.gameObject);
     }
 
@@ -57,6 +63,10 @@ public class SigeruTapioka : TapiokaBase
         else if (collision.CompareTag("SwallowPoint"))
         {
             Swallow();
+        }
+        else if (collision.CompareTag("DethZone"))
+        {
+            Deth();
         }
     }
 

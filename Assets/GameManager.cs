@@ -5,9 +5,11 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
+    [SerializeField] CreateTapi _createTapi;
+
     [SerializeField] Transform _tapiposi;
 
-    [SerializeField] Text scoreText;
+    [SerializeField] Text _scoreText;
 
     private int score = 0;
 
@@ -32,6 +34,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
+
     void Start()
     {
         ScoreReWrite();
@@ -44,11 +47,8 @@ public class GameManager : MonoBehaviour
 
     public void ScoreReWrite()
     {
-        scoreText.text = Score.ToString();
+        _scoreText.text = Score.ToString();
     }
 
-    public void GameEnd()
-    {
-        Straw.agameEnd = false;
-    }
+    
 }

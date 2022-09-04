@@ -6,6 +6,7 @@ TagManager:
   tags:
   - StrawObj
   - SwallowPoint
+  - DethZone
   layers:
   - Default
   - TransparentFX
