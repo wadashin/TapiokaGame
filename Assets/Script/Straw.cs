@@ -11,6 +11,8 @@ public class Straw : MonoBehaviour
 
     public static bool agameEnd = true;
 
+    public float timer;
+
     [SerializeField] Transform _absorptionPoint;
 
     public static float Capacity
@@ -21,8 +23,7 @@ public class Straw : MonoBehaviour
         }
         set
         {
-            capacity += 0.1f;
-            Debug.Log(capacity);
+            capacity += 0.05f;
         }
     }
 
@@ -44,12 +45,29 @@ public class Straw : MonoBehaviour
 
         if (Input.GetButtonDown("Fire1"))
         {
-            GetComponent<CircleCollider2D>().enabled = true;
+            agameEnd = true;
         }
         else if(Input.GetButtonUp("Fire1"))
         {
-            GetComponent<CircleCollider2D>().enabled = false;
-            StopAllCoroutines();
+            agameEnd = false;
+            //StopAllCoroutines();
+        }
+    }
+
+    private void FixedUpdate()
+    {
+        if (agameEnd)
+        {
+            timer += Time.deltaTime;
+            if (timer >= capacity)
+            {
+                GetComponent<CircleCollider2D>().enabled = true;
+                timer -= capacity;
+            }
+            else
+            {
+                GetComponent<CircleCollider2D>().enabled = false;
+            }
         }
     }
 
@@ -59,16 +77,16 @@ public class Straw : MonoBehaviour
         if (agameEnd && collision.TryGetComponent(out TapiokaBase tapioka))
         {
             tapioka.Absorption(_absorptionPoint);
-            StartCoroutine("AbsorptionCoolTime");
+            //StartCoroutine("AbsorptionCoolTime");
         }
     }
 
-    IEnumerator AbsorptionCoolTime()
-    {
-        GetComponent<CircleCollider2D>().enabled = false;
-        yield return new WaitForSecondsRealtime(capacity);
-        GetComponent<CircleCollider2D>().enabled = true;
-    }
+    //IEnumerator AbsorptionCoolTime()
+    //{
+    //    GetComponent<CircleCollider2D>().enabled = false;
+    //    yield return new WaitForSecondsRealtime(capacity);
+    //    GetComponent<CircleCollider2D>().enabled = true;
+    //}
 
 
 }
