@@ -47,7 +47,7 @@ public class GameManager : MonoBehaviour
 
     public void ScoreReWrite()
     {
-        _scoreText.text = Score.ToString();
+        _scoreText.text = Score.ToString() + "Kcal";
     }
 
     
