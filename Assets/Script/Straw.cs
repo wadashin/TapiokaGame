@@ -23,7 +23,14 @@ public class Straw : MonoBehaviour
         }
         set
         {
-            capacity += 0.05f;
+            if (value > 0)
+            {
+                capacity += 0.05f;
+            }
+            else if(value < 0)
+            {
+                capacity -= 0.05f;
+            }
         }
     }
 
@@ -43,30 +50,29 @@ public class Straw : MonoBehaviour
             this.transform.position = target;
         }
 
-        if (Input.GetButtonDown("Fire1"))
-        {
-            agameEnd = true;
-        }
-        else if(Input.GetButtonUp("Fire1"))
-        {
-            agameEnd = false;
-            //StopAllCoroutines();
-        }
+        //else if(Input.GetButtonUp("Fire1"))
+        //{
+        //    agameEnd = false;
+        //    //StopAllCoroutines();
+        //}
     }
 
     private void FixedUpdate()
     {
         if (agameEnd)
         {
-            timer += Time.deltaTime;
-            if (timer >= capacity)
+            if (Input.GetButton("Fire1"))
             {
-                GetComponent<CircleCollider2D>().enabled = true;
-                timer -= capacity;
-            }
-            else
-            {
-                GetComponent<CircleCollider2D>().enabled = false;
+                timer += Time.deltaTime;
+                if (timer >= capacity)
+                {
+                    GetComponent<CircleCollider2D>().enabled = true;
+                    timer -= capacity;
+                }
+                else
+                {
+                    GetComponent<CircleCollider2D>().enabled = false;
+                }
             }
         }
     }

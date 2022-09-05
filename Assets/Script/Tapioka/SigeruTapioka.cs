@@ -28,8 +28,19 @@ public class SigeruTapioka : TapiokaBase
     {
         if (strawpoint && absorption)
         {
-            _rb.velocity = Vector2.up * _speed;
-            transform.position = new Vector2(strawpoint.transform.position.x, transform.position.y);
+            if (Input.GetButton("Fire1"))
+            {
+                _rb.velocity = Vector2.up * _speed;
+                transform.position = new Vector2(strawpoint.transform.position.x, transform.position.y);
+            }
+            else if (Input.GetButtonUp("Fire1"))
+            {
+                _rb.velocity = Vector2.zero;
+            }
+            else if (!Input.GetButton("Fire1"))
+            {
+                transform.position = new Vector2(strawpoint.transform.position.x, transform.position.y);
+            }
         }
     }
 
