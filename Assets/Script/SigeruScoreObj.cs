@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SigeruScoreObj : MonoBehaviour
 {
@@ -19,7 +20,6 @@ public class SigeruScoreObj : MonoBehaviour
     {
         yield return new WaitForSecondsRealtime(7);
         Straw.Capacity--;
-        Debug.Log(Straw.Capacity);
         Destroy(this.gameObject);
     }
 }

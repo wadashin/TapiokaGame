@@ -17,13 +17,18 @@ public class CreateTapi : MonoBehaviour
 
     IEnumerator ItemCreate()
     {
-        if (Random.Range(0, 100) <= _randomNum)
+        int random = Random.Range(0, 100);
+        if (random <= _randomNum)
         {
             Instantiate(tapis[0], new Vector2(this.transform.position.x + Random.Range(-2.0f, 2.0f), this.transform.position.y), Quaternion.identity);
         }
-        else
+        else if(random == 97)
         {
             Instantiate(tapis[1], new Vector2(this.transform.position.x + Random.Range(-2, 2), this.transform.position.y), Quaternion.identity);
+        }
+        else
+        {
+            Instantiate(tapis[2], new Vector2(this.transform.position.x + Random.Range(-2, 2), this.transform.position.y), Quaternion.identity);
         }
         yield return new WaitForSecondsRealtime(0.05f);
         StartCoroutine("ItemCreate");

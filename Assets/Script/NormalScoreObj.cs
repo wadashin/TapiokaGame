@@ -18,7 +18,6 @@ public class NormalScoreObj : MonoBehaviour
     IEnumerator Digestion()
     {
         yield return new WaitForSecondsRealtime(5);
-        Debug.Log(Straw.Capacity);
         Destroy(this.gameObject);
     }
 }
