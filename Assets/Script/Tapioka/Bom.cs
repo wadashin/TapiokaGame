@@ -15,13 +15,14 @@ public class Bom : TapiokaBase
 
     [SerializeField] GameObject _iTapi;
 
-
+    [SerializeField] GameObject _newsObj;
     void Start()
     {
         gameManager = GameObject.Find("===GameManagerObj===").GetComponent<GameManager>();
         _rb = GetComponent<Rigidbody2D>();
         _rb.velocity = Vector2.zero;
         _rb.AddForce(Vector2.up * 2, ForceMode2D.Impulse);
+        StartCoroutine("Destroyer");
     }
 
     void Update()
@@ -55,6 +56,11 @@ public class Bom : TapiokaBase
     public override void Swallow()
     {
         Instantiate(_iTapi, gameManager.Tapiposi);
+        if(GameManager.news)
+        {
+            Instantiate(_newsObj);
+            GameManager.news = false;
+        }
         Destroy(this.gameObject);
     }
 
@@ -90,6 +96,12 @@ public class Bom : TapiokaBase
             strawpoint = null;
 
         }
+    }
+
+    IEnumerator Destroyer()
+    {
+        yield return new WaitForSecondsRealtime(5);
+        Destroy(this.gameObject);
     }
 
 

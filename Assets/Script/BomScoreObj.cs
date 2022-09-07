@@ -7,6 +7,7 @@ public class BomScoreObj : MonoBehaviour
     [SerializeField] float _radius = 10f;
 
     [SerializeField] GameObject _explosion;
+
     void Start()
     {
         StartCoroutine("Digestion");

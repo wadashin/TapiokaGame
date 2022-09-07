@@ -11,8 +11,19 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] Text _scoreText;
 
+    [SerializeField] Text _resultText;
+
+    [SerializeField] Image _note;
+
+    [SerializeField] Image _background;
+
+    [SerializeField] string[] _resultSentence;
+
     private int score = 0;
 
+    public static bool news = true;
+
+    bool inGame = true;
     public Transform Tapiposi
     {
         get
@@ -29,8 +40,11 @@ public class GameManager : MonoBehaviour
         }
         set
         {
-            score = value;
-            ScoreReWrite();
+            if (inGame)
+            {
+                score = value;
+                ScoreReWrite();
+            }
         }
     }
 
@@ -50,5 +64,34 @@ public class GameManager : MonoBehaviour
         _scoreText.text = Score.ToString() + "Kcal";
     }
 
-    
+    public void Scoring()
+    {
+        inGame = false;
+        _resultText.gameObject.SetActive(true);
+        _note.gameObject.SetActive(true);
+        _background.gameObject.SetActive(true);
+
+        if (score < 800)
+        {
+            _resultText.text = _resultSentence[0];
+        }
+        else if(score < 850)
+        {
+            _resultText.text = _resultSentence[1];
+        }
+        else if(score < 900)
+        {
+            _resultText.text = _resultSentence[2];
+        }
+        else if(score < 1000)
+        {
+            _resultText.text = _resultSentence[3];
+        }
+        else
+        {
+            _resultText.text = _resultSentence[4];
+        }
+    }
+
+
 }

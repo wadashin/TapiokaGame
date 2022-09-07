@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CreateTapi : MonoBehaviour
 {
-    [SerializeField] int _randomNum = 80;
+    [SerializeField] int _randomNum;
     [SerializeField] GameObject[] tapis;
     GameManager gameManager;
 
@@ -22,7 +22,7 @@ public class CreateTapi : MonoBehaviour
         {
             Instantiate(tapis[0], new Vector2(this.transform.position.x + Random.Range(-2.0f, 2.0f), this.transform.position.y), Quaternion.identity);
         }
-        else if(random == 97)
+        else if(random == 96 || random == 97)
         {
             Instantiate(tapis[1], new Vector2(this.transform.position.x + Random.Range(-2, 2), this.transform.position.y), Quaternion.identity);
         }
@@ -30,7 +30,7 @@ public class CreateTapi : MonoBehaviour
         {
             Instantiate(tapis[2], new Vector2(this.transform.position.x + Random.Range(-2, 2), this.transform.position.y), Quaternion.identity);
         }
-        yield return new WaitForSecondsRealtime(0.05f);
+        yield return new WaitForSecondsRealtime(0.04f);
         StartCoroutine("ItemCreate");
     }
 }
