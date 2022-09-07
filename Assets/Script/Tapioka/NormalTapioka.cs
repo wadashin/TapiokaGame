@@ -54,7 +54,6 @@ public class NormalTapioka : TapiokaBase
     public override void Swallow()
     {
         Instantiate(_iTapi, gameManager.Tapiposi);
-        gameManager.Score++;
         Destroy(this.gameObject);
     }
 

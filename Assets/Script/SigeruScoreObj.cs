@@ -18,7 +18,7 @@ public class SigeruScoreObj : MonoBehaviour
 
     IEnumerator Digestion()
     {
-        yield return new WaitForSecondsRealtime(7);
+        yield return new WaitForSecondsRealtime(6);
         Straw.Capacity--;
         Destroy(this.gameObject);
     }
