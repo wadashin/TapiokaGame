@@ -138,3 +138,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _speed: 10
   _iTapi: {fileID: 5649755927645164953, guid: 4532b282edcd72948b6c90c6eb1281e9, type: 3}
+  _aoriTextObj: {fileID: 1386651903497224294, guid: 8b722a8cb84dcc54fb3dc5bf23103004, type: 3}

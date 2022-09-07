@@ -28,8 +28,7 @@ AnimatorController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: "\u540D\u79F0\u672A\u8A2D\u5B9A\u306E\u30C7\u30B6\u30A4\u30F3__13_-removebg-preview
-    (1)"
+  m_Name: a
   serializedVersion: 5
   m_AnimatorParameters: []
   m_AnimatorLayers:

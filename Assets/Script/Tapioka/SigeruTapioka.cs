@@ -18,7 +18,7 @@ public class SigeruTapioka : TapiokaBase
 
     [SerializeField] GameObject _iTapi;
 
-
+    [SerializeField] GameObject _aoriTextObj;
 
     void Start()
     {
@@ -60,6 +60,7 @@ public class SigeruTapioka : TapiokaBase
     public override void Swallow()
     {
         Instantiate(_iTapi, gameManager.Tapiposi);
+        Instantiate(_aoriTextObj, new Vector2(0, Random.Range(-4, 3)), Quaternion.identity);
         _downImage.CreateDown();
         Straw.Capacity++;
         Destroy(this.gameObject);

@@ -19,7 +19,6 @@ public class NormalScoreObj : MonoBehaviour
 
     public void Delete()
     {
-        gameManager.Score--;
         Destroy(this.gameObject);
     }
 

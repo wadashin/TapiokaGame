@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class BomScoreObj : MonoBehaviour
 {
-    [SerializeField] float radius = 10f;
+    [SerializeField] float _radius = 10f;
 
+    [SerializeField] GameObject _explosion;
     void Start()
     {
         StartCoroutine("Digestion");
@@ -13,7 +14,7 @@ public class BomScoreObj : MonoBehaviour
 
     void Explosion()
     {
-        Collider2D[] colliders = Physics2D.OverlapCircleAll(this.transform.position, radius);
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(this.transform.position, _radius);
 
 
         foreach (Collider2D hit in colliders)
@@ -32,6 +33,7 @@ public class BomScoreObj : MonoBehaviour
     {
         yield return new WaitForSecondsRealtime(2.2f);
         Explosion();
+        Instantiate(_explosion);
         Destroy(this.gameObject);
     }
 
