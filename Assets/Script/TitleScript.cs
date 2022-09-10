@@ -15,6 +15,10 @@ public class TitleScript : MonoBehaviour
     [SerializeField] GameObject _sigeru;
     [SerializeField] Button _startButton;
     [SerializeField] Button _setumeiButton;
+    [SerializeField] GameObject _audioObj;
+
+
+
     public void Dokaaaan()
     {
         _explosion.gameObject.SetActive(true); 
@@ -32,5 +36,10 @@ public class TitleScript : MonoBehaviour
         _startButton.gameObject.SetActive(true);
         _setumeiButton.gameObject.SetActive(true);
         Destroy(this.gameObject);
+    }
+
+    public void Bakuhatuon()
+    {
+        _audioObj.gameObject.SetActive(true);
     }
 }

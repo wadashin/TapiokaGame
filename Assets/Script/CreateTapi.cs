@@ -30,7 +30,7 @@ public class CreateTapi : MonoBehaviour
         {
             Instantiate(tapis[2], new Vector2(this.transform.position.x + Random.Range(-2, 2), this.transform.position.y), Quaternion.identity);
         }
-        yield return new WaitForSecondsRealtime(0.03f);
+        yield return new WaitForSecondsRealtime(0.027f);
         StartCoroutine("ItemCreate");
     }
 }

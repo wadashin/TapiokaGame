@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -16,6 +17,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] Image _note;
 
     [SerializeField] Image _background;
+
+    [SerializeField] Button _backButton;
 
     [SerializeField] string[] _resultSentence;
 
@@ -52,6 +55,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         ScoreReWrite();
+        news = true;
     }
 
     void Point(GameObject tapi)
@@ -70,6 +74,7 @@ public class GameManager : MonoBehaviour
         _resultText.gameObject.SetActive(true);
         _note.gameObject.SetActive(true);
         _background.gameObject.SetActive(true);
+        _backButton.gameObject.SetActive(true);
 
         if (score < 800)
         {
@@ -93,5 +98,9 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void BackTitle()
+    {
+        SceneManager.LoadScene("TitleScene");
+    }
 
 }

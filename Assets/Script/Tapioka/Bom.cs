@@ -29,16 +29,16 @@ public class Bom : TapiokaBase
     {
         if (strawpoint && absorption)
         {
-            if (Input.GetButton("Fire1"))
+            if (Input.GetButton("Fire1") || Input.GetMouseButtonDown(0))
             {
                 _rb.velocity = Vector2.up * _speed;
                 transform.position = new Vector2(strawpoint.transform.position.x, transform.position.y);
             }
-            else if (Input.GetButtonUp("Fire1"))
+            else if (Input.GetButtonUp("Fire1") || Input.GetMouseButtonDown(0))
             {
                 _rb.velocity = Vector2.zero;
             }
-            else if (!Input.GetButton("Fire1"))
+            else if (!Input.GetButton("Fire1") || Input.GetMouseButtonDown(0))
             {
                 transform.position = new Vector2(strawpoint.transform.position.x, transform.position.y);
             }
