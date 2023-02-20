@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class ObjectPool : MonoBehaviour
 {
-    private const int POOL_COUNT = 20;
-
     private Dictionary<string, List<GameObject>> _objectDic = default;
 
     private static ObjectPool instance;
@@ -29,7 +27,7 @@ public class ObjectPool : MonoBehaviour
 
     //////////////////////////////////////////////////////
 
-    public void CreatePool(GameObject poolObject, int poolCount = POOL_COUNT)
+    public void CreatePool(GameObject poolObject, int poolCount = 20)
     {
         if (_objectDic.ContainsKey(poolObject.name))
         {
