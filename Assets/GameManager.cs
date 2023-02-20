@@ -31,6 +31,7 @@ public class GameManager : MonoBehaviour
     {
         get
         {
+            Vibration.Vibrate();
             return _tapiposi;
         }
     }
